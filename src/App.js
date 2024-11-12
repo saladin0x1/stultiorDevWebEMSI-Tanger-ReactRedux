@@ -2,8 +2,8 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";  // Bootstrap
+import "./App.css";  // Custom CSS file for custom styles
 
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -16,7 +16,6 @@ import BoardAdmin from "./components/BoardAdmin";
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 
-// import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
 
 const App = () => {
@@ -58,7 +57,7 @@ const App = () => {
 
   return (
     <div>
-      <nav className="navbar navbar-expand navbar-dark bg-dark">
+      <nav className="navbar navbar-expand navbar-dark">
         <Link to={"/"} className="navbar-brand">
           Dumber
         </Link>
@@ -136,8 +135,6 @@ const App = () => {
           <Route path="/admin" element={<BoardAdmin />} />
         </Routes>
       </div>
-
-      {/* <AuthVerify logOut={logOut}/> */}
     </div>
   );
 };

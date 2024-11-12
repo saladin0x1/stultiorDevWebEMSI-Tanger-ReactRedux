@@ -1,8 +1,9 @@
 import { combineReducers } from "redux";
-import auth from "./auth";
+import { authReducer } from './auth';  // Named import
 import message from "./message";
 
+// Use the correct name for the auth reducer in combineReducers
 export default combineReducers({
-  auth,
+  auth: authReducer,  // Rename authReducer to 'auth' in the combined reducer
   message,
 });

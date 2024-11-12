@@ -1,8 +1,7 @@
 import { SET_MESSAGE, CLEAR_MESSAGE } from "../actions/types";
 
-const initialState = {};
-
-export default function (state = initialState, action) {
+// Define the reducer function with a name
+function messageReducer(state = {}, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -16,3 +15,6 @@ export default function (state = initialState, action) {
       return state;
   }
 }
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default messageReducer;

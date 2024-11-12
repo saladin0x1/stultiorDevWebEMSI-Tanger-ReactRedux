@@ -6,13 +6,17 @@ import {
   LOGOUT,
 } from "../actions/types";
 
+// Retrieve user data from localStorage
 const user = JSON.parse(localStorage.getItem("user"));
 
+// Initialize the state based on user presence
 const initialState = user
   ? { isLoggedIn: true, user }
   : { isLoggedIn: false, user: null };
 
-export default function (state = initialState, action) {
+// Named export for the reducer function
+// eslint-disable-next-line import/no-anonymous-default-export
+export function authReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
