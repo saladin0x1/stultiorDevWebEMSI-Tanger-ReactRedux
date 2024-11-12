@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { FaSignInAlt, FaUserPlus, FaHome } from "react-icons/fa"; // Icons for Login, Register, and Home
 
 import "bootstrap/dist/css/bootstrap.min.css";  // Bootstrap
 import "./App.css";  // Custom CSS file for custom styles
@@ -57,17 +58,22 @@ const App = () => {
 
   return (
     <div>
+      {/* Navbar Section */}
       <nav className="navbar navbar-expand navbar-dark">
+        {/* Brand Name (Dumber) */}
         <Link to={"/"} className="navbar-brand">
           Dumber
         </Link>
+        {/* Navbar Links Section */}
         <div className="navbar-nav mr-auto">
+          {/* Home link with icon */}
           <li className="nav-item">
             <Link to={"/home"} className="nav-link">
-              Home
+              <FaHome /> Home
             </Link>
           </li>
 
+          {/* Show these links if the user has moderator role */}
           {showModeratorBoard && (
             <li className="nav-item">
               <Link to={"/mod"} className="nav-link">
@@ -76,6 +82,7 @@ const App = () => {
             </li>
           )}
 
+          {/* Show these links if the user has admin role */}
           {showAdminBoard && (
             <li className="nav-item">
               <Link to={"/admin"} className="nav-link">
@@ -84,6 +91,7 @@ const App = () => {
             </li>
           )}
 
+          {/* Show this link if the user is logged in */}
           {currentUser && (
             <li className="nav-item">
               <Link to={"/user"} className="nav-link">
@@ -93,6 +101,7 @@ const App = () => {
           )}
         </div>
 
+        {/* If user is logged in, display Profile and Logout options */}
         {currentUser ? (
           <div className="navbar-nav ml-auto">
             <li className="nav-item">
@@ -107,22 +116,26 @@ const App = () => {
             </li>
           </div>
         ) : (
+          // If user is not logged in, show Login and Sign Up options as icons
           <div className="navbar-nav ml-auto">
+            {/* Login icon for Login link */}
             <li className="nav-item">
               <Link to={"/login"} className="nav-link">
-                Login
+                <FaSignInAlt /> Login
               </Link>
             </li>
 
+            {/* Sign Up icon for Register link */}
             <li className="nav-item">
               <Link to={"/register"} className="nav-link">
-                Sign Up
+                <FaUserPlus /> Sign Up
               </Link>
             </li>
           </div>
         )}
       </nav>
 
+      {/* Routes for different components */}
       <div className="container mt-3">
         <Routes>
           <Route path="/" element={<Home />} />
